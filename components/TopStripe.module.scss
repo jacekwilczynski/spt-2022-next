@@ -1,0 +1,6 @@
+@use 'styles/theme/colors.module';
+
+.root {
+  height: 10px;
+  background-color: colors.$accent;
+}
