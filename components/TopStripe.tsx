@@ -1,5 +1,3 @@
 import styles from './TopStripe.module.scss'
 
-export const TopStripe = () => <>
-  <div className={styles.root}/>
-</>
+export const TopStripe = () => <div className={styles.root}/>

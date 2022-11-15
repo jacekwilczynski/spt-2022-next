@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "allowJs": true,
+    "baseUrl": "./",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "incremental": true,
@@ -13,6 +14,9 @@
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noUncheckedIndexedAccess": true,
+    "paths": {
+      "@/*": ["*"]
+    },
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
