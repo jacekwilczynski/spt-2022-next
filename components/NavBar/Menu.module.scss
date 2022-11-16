@@ -1,0 +1,33 @@
+@use 'styles/theme/colors.module';
+
+.root {
+  text-transform: uppercase;
+}
+
+.item {
+  border-top: 1px solid colors.$shade;
+}
+
+.link {
+  display: block;
+  font-size: .875rem;
+  font-weight: bold;
+  line-height: 1.6;
+  padding-bottom: .8em;
+  padding-top: .8em;
+  text-decoration: inherit;
+  text-transform: uppercase;
+  transition: opacity .3s;
+
+  &:hover {
+    opacity: .5;
+  }
+
+  &--active {
+    opacity: .5;
+  }
+}
+
+.active {
+  opacity: 0.5;
+}

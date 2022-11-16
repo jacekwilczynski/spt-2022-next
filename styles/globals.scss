@@ -1,5 +1,6 @@
 @use 'styles/theme/colors.module';
 @use 'styles/theme/fonts.module';
+@use 'utils';
 
 * {
   box-sizing: border-box;
@@ -19,4 +20,19 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+button {
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  background-color: inherit;
+}
+
+ul {
+  list-style: none;
 }
