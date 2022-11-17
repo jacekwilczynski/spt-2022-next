@@ -1,9 +1,15 @@
+import { TopNav } from '@/components/TopNav/TopNav'
 import { TopStripe } from '@/components/TopStripe'
-import { TopNav } from '@/components/NavBar/TopNav'
+import Head from 'next/head'
 
 export default function Home() {
   return <>
-    <TopStripe/>
-    <TopNav/>
+    <Head>
+      <title>Sala Prób Toruń</title>
+    </Head>
+    <header role="banner">
+      <TopStripe/>
+      <TopNav/>
+    </header>
   </>
 }

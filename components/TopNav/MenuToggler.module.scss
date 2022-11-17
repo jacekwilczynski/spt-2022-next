@@ -12,6 +12,7 @@
 
   // inside
   font-weight: bold;
+  text-transform: uppercase;
   color: colors.$accent;
 
   // interaction
@@ -22,4 +23,9 @@
     border-color: transparent;
     opacity: .5;
   }
+}
+
+.icon {
+  margin-right: 0.25em;
+  transform: translateY(+0.8px);
 }

@@ -1,18 +1,33 @@
-import classNames from 'classnames'
-import styles from './Container.module.scss'
-import React from 'react'
 import { StyleVariants } from '@/util/types'
+import classNames from 'classnames'
+import React from 'react'
+import styles from './Container.module.scss'
 
-export const Container = (props: {
-  children: React.ReactNode,
-  size: string & StyleVariants<typeof styles, 'size-'>,
-}) => {
-  const { children, size } = props
+type IE = JSX.IntrinsicElements
+const DEFAULT_TAGNAME = 'div'
 
-  const className = classNames(
-    styles.root,
-    styles[`size-${size}`],
+export function Container<T extends keyof IE = typeof DEFAULT_TAGNAME>(props: ContainerProps<T>) {
+  const {
+    tagName = DEFAULT_TAGNAME,
+    size,
+    className,
+    ...otherProps
+  } = props
+
+  return React.createElement(
+    tagName,
+    {
+      className: classNames(
+        styles.root,
+        styles[`size-${size}`],
+        className,
+      ),
+      ...otherProps,
+    },
   )
+}
 
-  return <div className={className}>{children}</div>
+export type ContainerProps<T extends keyof IE> = IE[T] & {
+  size: string & StyleVariants<typeof styles, 'size-'>
+  tagName?: T,
 }

@@ -5,7 +5,7 @@ export const Logo = () => (
   <Link href="/" className="d-block">
     <img
       src="/images/logo-white.jpg"
-      alt="Logo Sala Prób Toruń"
+      alt="Strona główna"
       className={styles.img}
     />
   </Link>
