@@ -1,11 +1,9 @@
-@use 'styles/theme/colors.module';
-
 .root {
   text-transform: uppercase;
 }
 
 .item {
-  border-top: 1px solid colors.$shade;
+  border-top: 1px solid var(--color-shade);
 }
 
 .link {

@@ -1,5 +1,5 @@
-@use 'styles/theme/colors.module';
-@use 'styles/theme/fonts.module';
+@use 'styles/theme/colors';
+@use 'styles/theme/fonts';
 @use 'utils';
 
 * {
@@ -13,8 +13,8 @@ body {
 }
 
 body {
-  font-family: fonts.$primary;
-  color: colors.$primary
+  font-family: var(--font-family-primary);
+  color: var(--color-primary);
 }
 
 a {

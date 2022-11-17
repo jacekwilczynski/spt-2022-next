@@ -1,5 +1,3 @@
-@use 'styles/theme/colors.module';
-
 .root {
   text-align: center;
 }
@@ -13,7 +11,7 @@
   // inside
   font-weight: bold;
   text-transform: uppercase;
-  color: colors.$accent;
+  color: var(--color-accent);
 
   // interaction
   cursor: pointer;
