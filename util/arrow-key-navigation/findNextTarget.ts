@@ -1,9 +1,9 @@
-export type Direction = "up" | "down" | "left" | "right";
+export type Direction = 'up' | 'down' | 'left' | 'right';
 
 export function findNextTarget(
   currentTarget: HTMLElement,
   direction: Direction,
-  container: HTMLElement
+  container: HTMLElement,
 ): HTMLElement | undefined {
   return undefined;
 }

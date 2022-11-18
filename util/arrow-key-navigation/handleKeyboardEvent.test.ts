@@ -1,24 +1,25 @@
-import { findNextTarget } from "./findNextTarget";
-import { handleKeyboardEvent } from "./handleKeyboardEvent";
+import { findNextTarget } from './findNextTarget'
+import { handleKeyboardEvent } from './handleKeyboardEvent'
 
-jest.mock("./findNextTarget", () => ({
-  findNextTarget: jest.fn(),
-}));
+jest.mock('./findNextTarget')
 
-describe(`handleKeyboardEvent`, () => {
-  it("does nothing if target not found", () => {
+describe('handleKeyboardEvent', () => {
+  it('does nothing if target not found', () => {
     // given
-    const keyboardEvent = new KeyboardEvent("keydown", { key: "ArrowLeft" });
+    const container = document.createElement('div')
+    const currentTarget = document.createElement('span')
 
-    const container = document.createElement("div");
-    const currentTarget = document.createElement("span");
-    container.appendChild(currentTarget);
-    container.addEventListener("keydown", handleKeyboardEvent);
+    const keyboardEvent = new KeyboardEvent('keydown', { key: 'ArrowLeft' })
+
+    Object.defineProperties(keyboardEvent, {
+      target: { value: currentTarget },
+      currentTarget: { value: container },
+    })
 
     // when
-    currentTarget.dispatchEvent(keyboardEvent);
+    handleKeyboardEvent(keyboardEvent)
 
     // then
-    expect(findNextTarget).toHaveBeenCalledWith(currentTarget, "left", container);
-  });
-});
+    expect(findNextTarget).toHaveBeenCalledWith(currentTarget, 'left', container)
+  })
+})
