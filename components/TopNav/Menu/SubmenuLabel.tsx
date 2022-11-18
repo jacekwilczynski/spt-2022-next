@@ -20,6 +20,7 @@ const Span = (props: {
     <span
       className={classNames(
         styles['item-label'],
+        styles['submenu-label'],
         styles[`submenu-label-${dedicatedScreenSize}`],
       )}
       tabIndex={focusable ? 0 : -1}

@@ -4,13 +4,14 @@ import { useId, useState } from 'react'
 import { Logo } from './Logo'
 import { Menu } from './Menu/Menu'
 import { MenuToggler } from './MenuToggler'
+import styles from './TopNav.module.scss'
 
 export const TopNav = () => {
   const [shouldMenuBeVisible, toggleMenuVisibility] = useToggle()
   const menuElementId = useId()
 
   return (
-    <Container size="wide" tagName="nav">
+    <Container size="wide" tagName="nav" className={styles.layout}>
 
       <Logo/>
 

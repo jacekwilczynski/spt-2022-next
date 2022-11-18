@@ -1,5 +1,11 @@
+@use '../TopNav/TopNav.module';
+
 .root {
   text-align: center;
+
+  @media (min-width: TopNav.$breakpoint) {
+    display: none;
+  }
 }
 
 .button {
