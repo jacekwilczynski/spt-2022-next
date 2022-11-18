@@ -22,11 +22,6 @@
   // interaction
   cursor: pointer;
   transition: border-color .3s, opacity .3s;
-
-  &:hover {
-    border-color: transparent;
-    opacity: .5;
-  }
 }
 
 .icon {
