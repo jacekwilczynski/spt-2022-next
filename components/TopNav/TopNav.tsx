@@ -2,7 +2,7 @@ import { Container } from '@/components/Container'
 import classNames from 'classnames'
 import { useId, useState } from 'react'
 import { Logo } from './Logo'
-import { Menu } from './Menu'
+import { Menu } from './Menu/Menu'
 import { MenuToggler } from './MenuToggler'
 
 export const TopNav = () => {
