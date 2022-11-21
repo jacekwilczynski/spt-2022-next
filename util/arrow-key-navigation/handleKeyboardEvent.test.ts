@@ -8,16 +8,14 @@ describe('handleKeyboardEvent', () => {
     // given
     const container = document.createElement('div')
     const currentTarget = document.createElement('span')
+    container.appendChild(currentTarget)
 
-    const keyboardEvent = new KeyboardEvent('keydown', { key: 'ArrowLeft' })
+    const keyboardEvent = new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true })
 
-    Object.defineProperties(keyboardEvent, {
-      target: { value: currentTarget },
-      currentTarget: { value: container },
-    })
+    container.addEventListener('keydown', handleKeyboardEvent)
 
     // when
-    handleKeyboardEvent(keyboardEvent)
+    currentTarget.dispatchEvent(keyboardEvent)
 
     // then
     expect(findNextTarget).toHaveBeenCalledWith(currentTarget, 'left', container)
