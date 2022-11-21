@@ -3,9 +3,7 @@ import { handleKeyboardEvent } from './handleKeyboardEvent'
 
 jest.mock('./findNextElementToFocus')
 
-const findNextElementToFocusMocked = findNextElementToFocus as unknown as jest.Mock<typeof findNextElementToFocus>
-
-
+const findNextElementToFocusMocked = findNextElementToFocus as jest.MockedFunction<typeof findNextElementToFocus>
 
 describe('handleKeyboardEvent', () => {
   let container: HTMLElement
@@ -18,6 +16,8 @@ describe('handleKeyboardEvent', () => {
     currentTarget = document.createElement('span')
     container.appendChild(currentTarget)
     container.addEventListener('keydown', handleKeyboardEvent)
+
+    findNextElementToFocusMocked.mockClear()
   })
 
   it('it does nothing if non-arrow key is pressed', () => {
@@ -45,14 +45,16 @@ describe('handleKeyboardEvent', () => {
     expect(findNextElementToFocusMocked).toHaveBeenCalledWith(currentTarget, container, direction)
   })
 
-  it('finds next element based on pressed arrow key', () => {
+  it('focuses element if found', () => {
     keyboardEvent = new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true })
-    const element: HTMLElement = document.createElement('span')
+    const element = document.createElement('span')
+    element.focus = jest.fn()
     findNextElementToFocusMocked.mockReturnValue(element)
+
     // when
     currentTarget.dispatchEvent(keyboardEvent)
 
     // then
-    expect(findNextElementToFocusMocked).not.toHaveBeenCalled()
+    expect(element.focus).toHaveBeenCalled()
   })
 })
