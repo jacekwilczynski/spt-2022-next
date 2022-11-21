@@ -26,14 +26,13 @@ describe('handleKeyboardEvent', () => {
     expect(findNextElementToFocus).not.toHaveBeenCalled()
   })
 
-
   it.each([
     ['ArrowLeft', 'left'],
     ['ArrowRight', 'right'],
     ['ArrowUp', 'up'],
     ['ArrowDown', 'down']
-  ] as const)('tries to find next element if arrow key pressed', (arrowDirection: string, direction: Direction) => {
-    keyboardEvent = new KeyboardEvent('keydown', { key: arrowDirection, bubbles: true })
+  ] as const)('tries to find next element based on pressed arrow key', (key: string, direction: Direction) => {
+    keyboardEvent = new KeyboardEvent('keydown', { key, bubbles: true })
 
     // when
     currentTarget.dispatchEvent(keyboardEvent)
