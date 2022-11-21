@@ -1,5 +1,5 @@
-import { findNextTarget } from "./findNextTarget";
+import { findNextElementToFocus } from "./findNextElementToFocus";
 
 export function handleKeyboardEvent(event: KeyboardEvent) {
-  findNextTarget(event.target as HTMLElement, "left", event.currentTarget as HTMLElement);
+  findNextElementToFocus(event.target as HTMLElement, event.currentTarget as HTMLElement, "left");
 }

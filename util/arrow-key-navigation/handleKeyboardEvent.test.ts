@@ -1,10 +1,10 @@
-import { findNextTarget } from './findNextTarget'
+import { findNextElementToFocus } from './findNextElementToFocus'
 import { handleKeyboardEvent } from './handleKeyboardEvent'
 
-jest.mock('./findNextTarget')
+jest.mock('./findNextElementToFocus')
 
 describe('handleKeyboardEvent', () => {
-  it('does nothing if target not found', () => {
+  it('tries to find next element if arrow key pressed', () => {
     // given
     const container = document.createElement('div')
     const currentTarget = document.createElement('span')
@@ -18,6 +18,6 @@ describe('handleKeyboardEvent', () => {
     currentTarget.dispatchEvent(keyboardEvent)
 
     // then
-    expect(findNextTarget).toHaveBeenCalledWith(currentTarget, 'left', container)
+    expect(findNextElementToFocus).toHaveBeenCalledWith(currentTarget, container, 'left')
   })
 })

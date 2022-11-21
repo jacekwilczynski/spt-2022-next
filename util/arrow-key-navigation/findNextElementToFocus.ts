@@ -1,9 +1,9 @@
 export type Direction = 'up' | 'down' | 'left' | 'right';
 
-export function findNextTarget(
-  currentTarget: HTMLElement,
-  direction: Direction,
+export function findNextElementToFocus(
+  focusedElement: HTMLElement,
   container: HTMLElement,
+  direction: Direction,
 ): HTMLElement | undefined {
   return undefined;
 }
