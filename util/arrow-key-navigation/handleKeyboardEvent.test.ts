@@ -6,27 +6,17 @@ jest.mock('./findNextElementToFocus')
 const findNextElementToFocusMocked = jest.mocked(findNextElementToFocus)
 
 describe('handleKeyboardEvent', () => {
-  let container: HTMLElement
-  let currentTarget: HTMLElement
-  let keyboardEvent: KeyboardEvent
+  const container = document.createElement('div')
+  const focusedElement = document.createElement('span')
+  container.appendChild(focusedElement)
+  container.addEventListener('keydown', handleKeyboardEvent)
 
   beforeEach(() => {
-    // given
-    container = document.createElement('div')
-    currentTarget = document.createElement('span')
-    container.appendChild(currentTarget)
-    container.addEventListener('keydown', handleKeyboardEvent)
-
-    findNextElementToFocusMocked.mockClear()
+    jest.clearAllMocks()
   })
 
-  it('it does nothing if non-arrow key is pressed', () => {
-    keyboardEvent = new KeyboardEvent('keydown', { key: 'Enter', bubbles: true })
-
-    // when
-    currentTarget.dispatchEvent(keyboardEvent)
-
-    // then
+  it('does nothing if non-arrow key is pressed', () => {
+    pressKey('Enter')
     expect(findNextElementToFocusMocked).not.toHaveBeenCalled()
   })
 
@@ -36,25 +26,23 @@ describe('handleKeyboardEvent', () => {
     ['ArrowUp', 'up'],
     ['ArrowDown', 'down']
   ] as const)('tries to find next element based on pressed arrow key', (key: string, direction: Direction) => {
-    keyboardEvent = new KeyboardEvent('keydown', { key, bubbles: true })
-
-    // when
-    currentTarget.dispatchEvent(keyboardEvent)
-
-    // then
-    expect(findNextElementToFocusMocked).toHaveBeenCalledWith(currentTarget, container, direction)
+    pressKey(key)
+    expect(findNextElementToFocusMocked).toHaveBeenCalledWith(focusedElement, container, direction)
   })
 
   it('focuses element if found', () => {
-    keyboardEvent = new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true })
     const element = document.createElement('span')
     element.focus = jest.fn()
     findNextElementToFocusMocked.mockReturnValue(element)
 
-    // when
-    currentTarget.dispatchEvent(keyboardEvent)
+    pressKey('ArrowRight')
 
-    // then
     expect(element.focus).toHaveBeenCalled()
   })
+
+  function pressKey(key: string) {
+    const event = new KeyboardEvent('keydown', { key, bubbles: true })
+
+    focusedElement.dispatchEvent(event)
+  }
 })
