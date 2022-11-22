@@ -1,4 +1,5 @@
 import { getEligibleElements } from "./getEligibleElements";
+import { pickBestMatch } from "./pickBestMatch";
 
 export type Direction = 'up' | 'down' | 'left' | 'right';
 
@@ -7,7 +8,11 @@ export function findNextElementToFocus(
   container: HTMLElement,
   direction: Direction,
 ): HTMLElement | undefined {
-  getEligibleElements(container)
+  const elements = getEligibleElements(container)
 
-  return undefined;
+  if (elements.length < 1) {
+    throw new Error('no elements found.')
+  }
+
+  return pickBestMatch(focusedElement, elements, direction)
 }
