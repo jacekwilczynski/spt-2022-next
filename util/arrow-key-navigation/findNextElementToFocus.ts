@@ -1,3 +1,5 @@
+import { getEligibleElements } from "./getEligibleElements";
+
 export type Direction = 'up' | 'down' | 'left' | 'right';
 
 export function findNextElementToFocus(
@@ -5,5 +7,7 @@ export function findNextElementToFocus(
   container: HTMLElement,
   direction: Direction,
 ): HTMLElement | undefined {
+  getEligibleElements(container)
+
   return undefined;
 }
