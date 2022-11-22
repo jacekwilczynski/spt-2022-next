@@ -3,7 +3,7 @@ import { handleKeyboardEvent } from './handleKeyboardEvent'
 
 jest.mock('./findNextElementToFocus')
 
-const findNextElementToFocusMocked = findNextElementToFocus as jest.MockedFunction<typeof findNextElementToFocus>
+const findNextElementToFocusMocked = jest.mocked(findNextElementToFocus)
 
 describe('handleKeyboardEvent', () => {
   let container: HTMLElement
