@@ -11,10 +11,6 @@ describe('handleKeyboardEvent', () => {
   container.appendChild(focusedElement)
   container.addEventListener('keydown', handleKeyboardEvent)
 
-  beforeEach(() => {
-    jest.clearAllMocks()
-  })
-
   it('does nothing if non-arrow key is pressed', () => {
     pressKey('Enter')
     expect(findNextElementToFocusMocked).not.toHaveBeenCalled()
