@@ -5,7 +5,7 @@ import styles from './Logo.module.scss'
 export const Logo = () => (
   <Link href="/" className="d-block">
     <Image
-      name="logo-white.jpg"
+      name="logo-white"
       alt="Strona główna"
       className={styles.img}
     />
