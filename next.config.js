@@ -7,6 +7,10 @@ require('util').inspect.defaultOptions.depth = null
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  env: filterKeys(process.env, [
+    'CLOUDINARY_NAME',
+    'CLOUDINARY_PATH',
+  ]),
   reactStrictMode: true,
   swcMinify: true,
   webpack: (config) => {
@@ -32,4 +36,13 @@ function isUsedForLoadingStyles(rule) {
 
 function isUsedForStyleModules(rule) {
   return rule.test.test('x.module.css') || rule.test.test('x.module.scss')
+}
+
+function filterKeys(obj, keys) {
+  return Object.entries(obj)
+    .filter(([key]) => keys.includes(key))
+    .reduce(
+      (result, [key, value]) => ({ ...result, [key]: value }),
+      {},
+    )
 }
