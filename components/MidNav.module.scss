@@ -1,0 +1,10 @@
+.background {
+  background-color: var(--color-accent);
+}
+
+.layout {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}

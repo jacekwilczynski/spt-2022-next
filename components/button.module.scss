@@ -1,0 +1,19 @@
+.base {
+  background-color: inherit;
+  border: 2px solid;
+  border-radius: 10px;
+  color: var(--button-color, inherit);
+  cursor: pointer;
+  display: inline-block;
+  padding: .8em 1.6em;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: border-color .3s, opacity .3s;
+
+  &:hover {
+    border-color: transparent;
+    opacity: .5;
+  }
+}
