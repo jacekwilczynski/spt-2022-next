@@ -1,12 +1,24 @@
-$breakpoint: 768px;
+$-breakpoint: 768px;
+
+@mixin mobile {
+  @media (max-width: $-breakpoint) {
+    @content
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $-breakpoint) {
+    @content
+  }
+}
 
 .layout {
   composes: base from 'styles/modules/container.module.scss';
   composes: wide from 'styles/modules/container.module.scss';
 
-  @media (min-width: $breakpoint) {
+  @include desktop {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: center   ;
+    align-items: center;
   }
 }

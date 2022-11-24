@@ -1,0 +1,18 @@
+@use '../TopNav.module';
+
+.placeholder {
+  composes: base from '_item-content.base.module.scss';
+  cursor: pointer;
+}
+
+.mobile {
+  @include TopNav.desktop {
+    display: none;
+  }
+}
+
+.desktop {
+  @include TopNav.mobile {
+    display: none;
+  }
+}

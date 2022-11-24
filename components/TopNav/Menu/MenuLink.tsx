@@ -1,20 +1,30 @@
 import classNames from 'classnames'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import styles from './Menu.module.scss'
+import { ReactNode } from 'react'
+import styles from './MenuLink.module.scss'
 
-export const MenuLink = (props: LinkProps) => {
+export const MenuLink = (props: {
+  children: ReactNode
+  href: string
+  level?: 1 | 2
+}) => {
+  const { children, level = 1, href } = props
   const { asPath } = useRouter()
 
-  const className = classNames(
-    styles['item-label'],
-    styles['link'],
-    { [styles['link-active']]: asPath === props.href },
-    props.className,
+  return (
+    <Link
+      className={classNames(
+        styles['link'],
+        {
+          [styles['level-2']]: level === 2,
+          [styles['to-current-page']]: asPath === props.href,
+        },
+      )}
+      href={href}
+    >
+      {children}
+    </Link>
   )
-
-  return <Link {...props} className={className}>{props.children}</Link>
 }
 
-// Next.js has a LinkProps type, but it's missing some props that are actually allowed like children or className.
-export type LinkProps = Parameters<typeof Link>[0]

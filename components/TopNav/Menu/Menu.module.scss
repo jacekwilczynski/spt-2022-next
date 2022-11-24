@@ -1,76 +1,14 @@
-@use 'components/TopNav/TopNav.module';
+@use '../TopNav.module';
 
-.root {
-  text-transform: uppercase;
-
-  @media (min-width: TopNav.$breakpoint) {
+.level-1 {
+  @include TopNav.desktop {
     display: flex;
     justify-content: flex-end;
   }
 }
 
-.item {
-  @media (max-width: TopNav.$breakpoint) {
-    border-top: 1px solid var(--color-shade);
-  }
-
-  @media (min-width: TopNav.$breakpoint) {
-    position: relative;
-  }
-}
-
-.item-label {
-  display: block;
-  padding: 0.8em 1.6em;
-  font-size: 0.875rem;
-  font-weight: bold;
-  line-height: 1.6;
-  text-decoration: inherit;
-  text-transform: uppercase;
-  white-space: nowrap;
-
-  @media (min-width: TopNav.$breakpoint) {
-    padding-left: 1em;
-    padding-right: 1em;
-  }
-}
-
-.link {
-  transition: opacity .3s;
-
-  &-active, &:hover {
-    opacity: 0.5;
-  }
-}
-
-.submenu-label {
-  cursor: pointer;
-
-  @media (max-width: TopNav.$breakpoint) {
-    &-lg {
-      display: none;
-    }
-  }
-
-  @media (min-width: TopNav.$breakpoint) {
-    &-sm {
-      display: none;
-    }
-  }
-
-  &-chevron {
-    margin-left: 0.5em;
-  }
-}
-
-.submenu {
-  @media (max-width: TopNav.$breakpoint) {
-    .item-label {
-      padding-left: 3.6em;
-    }
-  }
-
-  @media (min-width: TopNav.$breakpoint) {
+.level-2 {
+  @include TopNav.desktop {
     display: none;
     min-width: 15em;
     position: absolute;
@@ -78,8 +16,21 @@
     background-color: var(--color-accent);
     color: var(--color-secondary);
 
-    .item:hover > &, .item:focus-within > & {
+    .item:hover > &,
+    .item:focus-within > & {
       display: block;
     }
   }
+}
+
+.item {
+  position: relative;
+
+  @include TopNav.mobile {
+    border-top: 1px solid var(--color-shade);
+  }
+}
+
+.chevron {
+  margin-left: 0.5em;
 }

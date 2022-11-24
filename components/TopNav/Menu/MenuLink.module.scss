@@ -1,0 +1,13 @@
+.link {
+  composes: base from '_item-content.base.module.scss';
+  transition: opacity .3s;
+}
+
+.to-current-page,
+.link:hover {
+  opacity: 0.5;
+}
+
+.level-2 {
+  composes: level-2 from '_item-content.base.module.scss';
+}

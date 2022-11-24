@@ -1,0 +1,23 @@
+@use '../TopNav.module';
+
+.base {
+  display: block;
+  padding: 0.8em 1.6em;
+  font-size: 0.875rem;
+  font-weight: bold;
+  line-height: 1.6;
+  text-decoration: inherit;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  @include TopNav.desktop {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+}
+
+.level-2 {
+  @include TopNav.mobile {
+    padding-left: 3.6em;
+  }
+}

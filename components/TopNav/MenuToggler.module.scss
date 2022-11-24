@@ -1,9 +1,9 @@
-@use '../TopNav/TopNav.module';
+@use './TopNav.module';
 
 .layout {
   text-align: center;
 
-  @media (min-width: TopNav.$breakpoint) {
+  @include TopNav.desktop {
     display: none;
   }
 }
