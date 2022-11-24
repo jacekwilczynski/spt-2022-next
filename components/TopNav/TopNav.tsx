@@ -10,7 +10,7 @@ export const TopNav = () => {
   const menuElementId = useId()
 
   return (
-    <nav className={styles.layout}>
+    <nav className={styles['layout']}>
 
       <Logo/>
 

@@ -7,7 +7,7 @@ export const Logo = () => (
     <Image
       name="logo-white"
       alt="Strona główna"
-      className={styles.img}
+      className={styles['img']}
     />
   </Link>
 )
