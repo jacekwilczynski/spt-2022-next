@@ -3,8 +3,16 @@
 }
 
 .layout {
+  composes: base from 'styles/modules/container.module.scss';
+  composes: narrow from 'styles/modules/container.module.scss';
+
   display: flex;
   justify-content: space-around;
   padding-top: 1em;
   padding-bottom: 1em;
+}
+
+.link {
+  composes: base from 'styles/modules/button.module.scss';
+  --button-color: var(--color-secondary);
 }

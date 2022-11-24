@@ -4,6 +4,9 @@ import classNames from 'classnames'
 import { ReactNode } from 'react'
 import styles from './Menu.module.scss'
 
+/**
+ * Like a menu link but not a link because it doesn't take you anywhere.
+ */
 export const SubmenuLabel = ({ children }: { children: ReactNode }) => <>
   <Span dedicatedScreenSize="sm" focusable={false}>{children}</Span>
   <Span dedicatedScreenSize="lg" focusable={true}>{children}</Span>

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import styles from './MenuToggler.module.scss'
 
 export const MenuToggler = (props: JSX.IntrinsicElements['button']) => (
-  <div className={styles.root}>
+  <div className={styles.layout}>
     <button
       className={styles.button}
       aria-haspopup={true}

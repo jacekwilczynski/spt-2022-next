@@ -1,6 +1,6 @@
 @use '../TopNav/TopNav.module';
 
-.root {
+.layout {
   text-align: center;
 
   @media (min-width: TopNav.$breakpoint) {

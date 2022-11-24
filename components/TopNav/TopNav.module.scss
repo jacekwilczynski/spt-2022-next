@@ -1,6 +1,9 @@
 $breakpoint: 768px;
 
 .layout {
+  composes: base from 'styles/modules/container.module.scss';
+  composes: wide from 'styles/modules/container.module.scss';
+
   @media (min-width: $breakpoint) {
     display: grid;
     grid-template-columns: 1fr 1fr;

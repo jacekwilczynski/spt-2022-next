@@ -1,4 +1,3 @@
-import { Container } from '@/components/Container'
 import classNames from 'classnames'
 import { useId, useState } from 'react'
 import { Logo } from './Logo'
@@ -11,7 +10,7 @@ export const TopNav = () => {
   const menuElementId = useId()
 
   return (
-    <Container size="wide" tagName="nav" className={styles.layout}>
+    <nav className={styles.layout}>
 
       <Logo/>
 
@@ -26,7 +25,7 @@ export const TopNav = () => {
         id={menuElementId}
       />
 
-    </Container>
+    </nav>
   )
 }
 
