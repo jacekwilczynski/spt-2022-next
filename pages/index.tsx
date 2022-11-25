@@ -1,7 +1,4 @@
-import { HeaderImage } from '@/components/HeaderImage'
-import { MidNav } from '@/components/MidNav'
-import { TopNav } from '@/components/TopNav/TopNav'
-import { TopStripe } from '@/components/TopStripe'
+import { Header } from '@/components/Header/Header'
 import Head from 'next/head'
 
 export default function Home() {
@@ -9,11 +6,6 @@ export default function Home() {
     <Head>
       <title>Sala Prób Toruń</title>
     </Head>
-    <header role="banner">
-      <TopStripe/>
-      <TopNav/>
-      <HeaderImage/>
-      <MidNav/>
-    </header>
+    <Header/>
   </>
 }
