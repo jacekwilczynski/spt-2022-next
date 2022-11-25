@@ -1,4 +1,5 @@
 import { getEligibleElements } from './getEligibleElements'
+import '@testing-library/jest-dom/extend-expect'
 
 describe('getEligibleElements', () => {
   it('returns only focusable elements', () => {
@@ -32,5 +33,31 @@ describe('getEligibleElements', () => {
     expect(actual).not.toContain(spanWithoutTabIndex)
     expect(actual).not.toContain(spanWithTabIndexMinusOne)
     expect(actual).toHaveLength(1)
+  })
+
+  it.only('does not return invisible elements', () => {
+    const container = document.createElement('div')
+
+    const divInvisible = document.createElement('div')
+    const buttonNested = document.createElement('button')
+    buttonNested.innerText = 'click button nested'
+    divInvisible.style.display = 'none'
+    divInvisible.append(buttonNested)
+
+    const buttonInvisible = document.createElement('button')
+    buttonInvisible.innerText = 'click button invisible'
+    buttonInvisible.style.display = 'none'
+
+    const buttonVisible = document.createElement('button')
+    buttonVisible.innerText = 'click button visible'
+
+    container.append(divInvisible, buttonInvisible, buttonVisible)
+
+    const actual = getEligibleElements(container)
+
+    expect(actual).not.toContain(divInvisible)
+    expect(actual).not.toContain(buttonNested)
+    expect(actual).not.toContain(buttonInvisible)
+    expect(actual).toContain(buttonVisible)
   })
 })
