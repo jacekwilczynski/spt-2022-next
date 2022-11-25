@@ -12,12 +12,7 @@ export const Menu = (props: JSX.IntrinsicElements['ul']) => {
     <ul className={classNames(styles['level-1'], className)} {...otherProps}>
       <li className={styles['item']}>
         <Placeholder>Nasze sale <Chevron/></Placeholder>
-        <ul className={styles['level-2']}>
-          <li className={styles['item']}><MenuLink level={2} href="/sala-1">Sala 1</MenuLink></li>
-          <li className={styles['item']}><MenuLink level={2} href="/sala-2">Sala 2</MenuLink></li>
-          <li className={styles['item']}><MenuLink level={2} href="/sala-3">Sala 3</MenuLink></li>
-          <li className={styles['item']}><MenuLink level={2} href="/studio-nagran">Studio nagrań</MenuLink></li>
-        </ul>
+        <OurRoomsSubmenu/>
       </li>
       <li className={styles['item']}><MenuLink href="/cennik">Cennik</MenuLink></li>
       <li className={styles['item']}><MenuLink href="/kontakt">Kontakt</MenuLink></li>
@@ -30,4 +25,49 @@ const Chevron = () => (
     icon={faChevronDown}
     className={styles['chevron']}
   />
+)
+
+const OurRoomsSubmenu = () => (
+  <ul className={styles['level-2']}>
+
+    <li className={styles['item']}>
+      <MenuLink
+        level={2}
+        href="/sala-1"
+        contentForScreenReaders="Sala pierwsza"
+      >
+        Sala 1
+      </MenuLink>
+    </li>
+
+    <li className={styles['item']}>
+      <MenuLink
+        level={2}
+        href="/sala-2"
+        contentForScreenReaders="Sala druga"
+      >
+        Sala 2
+      </MenuLink>
+    </li>
+
+    <li className={styles['item']}>
+      <MenuLink
+        level={2}
+        href="/sala-3"
+        contentForScreenReaders="Sala trzecia"
+      >
+        Sala 3
+      </MenuLink>
+    </li>
+
+    <li className={styles['item']}>
+      <MenuLink
+        level={2}
+        href="/studio-nagran"
+      >
+        Studio nagrań
+      </MenuLink>
+    </li>
+
+  </ul>
 )
