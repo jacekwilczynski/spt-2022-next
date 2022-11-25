@@ -1,15 +1,26 @@
-.base {
-  background-color: inherit;
+.static {
+  // box model
+  display: inline-block;
   border: 2px solid;
   border-radius: 10px;
-  color: var(--button-color, inherit);
-  cursor: pointer;
-  display: inline-block;
   padding: .8em 1.6em;
+
+  // text
   font-size: 1rem;
   font-weight: bold;
   text-decoration: none;
   text-transform: uppercase;
+
+  // colors
+  background-color: inherit;
+  color: var(--button-color, inherit);
+
+  // interaction
+  cursor: pointer;
+}
+
+.with-hover {
+  composes: static;
   transition: border-color .3s, opacity .3s;
 
   &:hover {

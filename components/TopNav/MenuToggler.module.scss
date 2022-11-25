@@ -9,19 +9,8 @@
 }
 
 .button {
-  // box model
-  border: 2px solid;
-  border-radius: 10px;
-  padding: 0.8em 1.6em;
-
-  // inside
-  font-weight: bold;
-  text-transform: uppercase;
-  color: var(--color-accent);
-
-  // interaction
-  cursor: pointer;
-  transition: border-color .3s, opacity .3s;
+  composes: static from 'styles/modules/button.module.scss';
+  --button-color: var(--color-accent);
 }
 
 .icon {

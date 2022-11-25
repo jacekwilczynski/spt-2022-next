@@ -13,6 +13,6 @@
 }
 
 .link {
-  composes: base from 'styles/modules/button.module.scss';
+  composes: with-hover from 'styles/modules/button.module.scss';
   --button-color: var(--color-secondary);
 }
