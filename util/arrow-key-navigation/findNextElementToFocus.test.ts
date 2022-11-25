@@ -9,10 +9,6 @@ const getEligibleElementsMocked = jest.mocked(getEligibleElements)
 const pickBestMatchMocked = jest.mocked(pickBestMatch)
 
 describe('findNextElementToFocus', () => {
-  beforeEach(() => {
-    jest.resetAllMocks()
-  })
-
   const container = document.createElement('div')
   const focusedElement = document.createElement('span')
   const direction = 'right'
