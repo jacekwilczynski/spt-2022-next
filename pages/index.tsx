@@ -1,4 +1,4 @@
-import { Image } from '@/components/Image'
+import { HeaderImage } from '@/components/HeaderImage'
 import { MidNav } from '@/components/MidNav'
 import { TopNav } from '@/components/TopNav/TopNav'
 import { TopStripe } from '@/components/TopStripe'
@@ -12,7 +12,7 @@ export default function Home() {
     <header role="banner">
       <TopStripe/>
       <TopNav/>
-      <Image name="header-photo" alt="Zdjęcie Sali 1"/>
+      <HeaderImage/>
       <MidNav/>
     </header>
   </>
