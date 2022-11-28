@@ -1,12 +1,11 @@
 import { getEligibleElements } from './getEligibleElements'
 
-// skipped for now as jsdom is not capable of rendering
-describe.skip('getEligibleElements', () => {
+describe('getEligibleElements', () => {
   it('returns only focusable elements', () => {
-    const container = document.createElement('div')
-    const link = document.createElement('a')
-    const button = document.createElement('button')
-    const div = document.createElement('div')
+    const container = createElement('div')
+    const link = createElement('a')
+    const button = createElement('button')
+    const div = createElement('div')
     container.append(link, button, div)
 
     const actual = getEligibleElements(container)
@@ -19,11 +18,11 @@ describe.skip('getEligibleElements', () => {
   })
 
   it('returns spans only with tabindex=0', () => {
-    const container = document.createElement('div')
-    const spanWithoutTabIndex = document.createElement('span')
-    const spanWithTabIndexZero = document.createElement('span')
+    const container = createElement('div')
+    const spanWithoutTabIndex = createElement('span')
+    const spanWithTabIndexZero = createElement('span')
     spanWithTabIndexZero.setAttribute('tabindex', '0')
-    const spanWithTabIndexMinusOne = document.createElement('span')
+    const spanWithTabIndexMinusOne = createElement('span')
     spanWithTabIndexMinusOne.setAttribute('tabindex', '-1')
     container.append(spanWithoutTabIndex, spanWithTabIndexZero, spanWithTabIndexMinusOne)
 
@@ -36,29 +35,27 @@ describe.skip('getEligibleElements', () => {
   })
 
   it('does not return invisible elements', () => {
-    const container = document.createElement('div')
-
-    const divInvisible = document.createElement('div')
-    const buttonNested = document.createElement('button')
-    buttonNested.innerText = 'click button nested'
-    divInvisible.style.display = 'none'
-    divInvisible.append(buttonNested)
-
-    const buttonInvisible = document.createElement('button')
-    buttonInvisible.innerText = 'click button invisible'
-    buttonInvisible.style.display = 'none'
-
-    const buttonVisible = document.createElement('button')
-    buttonVisible.innerText = 'click button visible'
-
-    container.append(divInvisible, buttonInvisible, buttonVisible)
-    document.body.append(container)
+    const container = createElement('div')
+    const linkVisible = createElement('a', { width: 1, height: 1 })
+    const linkInvisble = createElement('a', { width: 0, height: 0 })
+    container.append(linkVisible, linkInvisble)
 
     const actual = getEligibleElements(container)
 
-    expect(actual).not.toContain(divInvisible)
-    expect(actual).not.toContain(buttonNested)
-    expect(actual).not.toContain(buttonInvisible)
-    expect(actual).toContain(buttonVisible)
+    expect(actual).toContain(linkVisible)
+    expect(actual).not.toContain(linkInvisble)
+    expect(actual).toHaveLength(1)
   })
 })
+
+function createElement(
+  tag: string,
+  { width, height }: PartialRect = { width: 1, height: 1 },
+) {
+  const element = document.createElement(tag)
+  element.getBoundingClientRect = () => ({ width, height }) as DOMRect
+
+  return element
+}
+
+type PartialRect = Pick<DOMRect, 'width' | 'height'>
