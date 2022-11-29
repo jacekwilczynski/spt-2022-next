@@ -1,5 +1,5 @@
 .link {
-  composes: base from '_item-content.base.module.scss';
+  composes: base from '_menu-item-content.module.scss';
   transition: opacity .3s;
 }
 
@@ -9,5 +9,5 @@
 }
 
 .level-2 {
-  composes: level-2 from '_item-content.base.module.scss';
+  composes: level-2 from '_menu-item-content.module.scss';
 }

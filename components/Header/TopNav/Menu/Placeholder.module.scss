@@ -1,7 +1,7 @@
 @use '../TopNav.module';
 
 .placeholder {
-  composes: base from '_item-content.base.module.scss';
+  composes: base from '_menu-item-content.module.scss';
   cursor: pointer;
 }
 
