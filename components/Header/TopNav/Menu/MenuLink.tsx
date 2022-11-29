@@ -8,17 +8,9 @@ export const MenuLink = (props: {
   children: ReactNode
   href: string
   level?: 1 | 2
-  contentForScreenReaders?: ReactNode
 }) => {
-  const { children, contentForScreenReaders, href, level = 1 } = props
+  const { children, href, level = 1 } = props
   const { asPath } = useRouter()
-
-  const content = contentForScreenReaders != undefined
-    ? <>
-      <span className="visually-hidden">{contentForScreenReaders}</span>
-      <span aria-hidden={true}>{children}</span>
-    </>
-    : children
 
   return (
     <Link
@@ -31,7 +23,7 @@ export const MenuLink = (props: {
       )}
       href={href}
     >
-      {content}
+      {children}
     </Link>
   )
 }

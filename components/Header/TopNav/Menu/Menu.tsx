@@ -1,3 +1,4 @@
+import { AriaContent } from '@/components/AriaContent'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import classNames from 'classnames'
@@ -34,9 +35,8 @@ const OurRoomsSubmenu = () => (
       <MenuLink
         level={2}
         href="/sala-1"
-        contentForScreenReaders="Sala pierwsza"
       >
-        Sala 1
+        <AriaContent sr="Sala pierwsza" visual="Sala 1"/>
       </MenuLink>
     </li>
 
@@ -44,9 +44,8 @@ const OurRoomsSubmenu = () => (
       <MenuLink
         level={2}
         href="/sala-2"
-        contentForScreenReaders="Sala druga"
       >
-        Sala 2
+        <AriaContent sr="Sala druga" visual="Sala 2"/>
       </MenuLink>
     </li>
 
@@ -54,9 +53,8 @@ const OurRoomsSubmenu = () => (
       <MenuLink
         level={2}
         href="/sala-3"
-        contentForScreenReaders="Sala trzecia"
       >
-        Sala 3
+        <AriaContent sr="Sala trzecia" visual="Sala 3"/>
       </MenuLink>
     </li>
 
