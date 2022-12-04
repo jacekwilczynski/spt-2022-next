@@ -1,4 +1,3 @@
-import { Header } from '@/components/Header/Header'
 import { Main } from '@/components/Main'
 import { ResponsiveIFrame } from '@/components/ResponsiveIFrame'
 import Head from 'next/head'
@@ -8,7 +7,7 @@ export default function Home() {
     <Head>
       <title>Sala Prób Toruń</title>
     </Head>
-    <Header/>
+
     <Main>
       <h1>Witamy!</h1>
       <p>
