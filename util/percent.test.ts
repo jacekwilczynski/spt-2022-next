@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals'
 import { asPercentage } from './percent'
 
 describe('the asPercentage function', () => {
@@ -21,7 +22,7 @@ describe('the asPercentage function', () => {
     [0.320, '32%'],
     [0.9876, '98.76%'],
     [21.37, '2137%'],
-  ] as const)('converts number %f to string %s', (input, expectedResult) => {
+  ])('converts number %f to string %s', (input, expectedResult) => {
     expect(asPercentage(input)).toBe(expectedResult)
   })
 

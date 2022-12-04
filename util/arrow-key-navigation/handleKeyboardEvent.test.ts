@@ -1,4 +1,5 @@
-import { Direction, findNextElementToFocus } from './findNextElementToFocus'
+import { describe, expect, it, jest } from '@jest/globals'
+import { findNextElementToFocus } from './findNextElementToFocus'
 import { handleKeyboardEvent } from './handleKeyboardEvent'
 
 jest.mock('./findNextElementToFocus')
@@ -20,8 +21,8 @@ describe('handleKeyboardEvent', () => {
     ['ArrowLeft', 'left'],
     ['ArrowRight', 'right'],
     ['ArrowUp', 'up'],
-    ['ArrowDown', 'down']
-  ] as const)('tries to find next element based on pressed arrow key', (key: string, direction: Direction) => {
+    ['ArrowDown', 'down'],
+  ])('tries to find next element based on pressed arrow key', (key, direction) => {
     pressKey(key)
     expect(findNextElementToFocusMocked).toHaveBeenCalledWith(focusedElement, container, direction)
   })

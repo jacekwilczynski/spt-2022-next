@@ -1,5 +1,5 @@
-import { getEligibleElements } from "./getEligibleElements";
-import { pickBestMatch } from "./pickBestMatch";
+import { getEligibleElements } from './getEligibleElements';
+import { pickBestMatch } from './pickBestMatch';
 
 export type Direction = 'up' | 'down' | 'left' | 'right';
 

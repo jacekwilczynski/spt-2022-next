@@ -1,6 +1,7 @@
-import { findNextElementToFocus } from "./findNextElementToFocus"
-import { getEligibleElements } from "./getEligibleElements"
-import { pickBestMatch } from "./pickBestMatch"
+import { describe, expect, it, jest } from '@jest/globals'
+import { findNextElementToFocus } from './findNextElementToFocus'
+import { getEligibleElements } from './getEligibleElements'
+import { pickBestMatch } from './pickBestMatch'
 
 jest.mock('./getEligibleElements')
 jest.mock('./pickBestMatch')
@@ -30,7 +31,9 @@ describe('findNextElementToFocus', () => {
   it('throws error if no elements found in container', () => {
     getEligibleElementsMocked.mockReturnValue([])
 
-    const findNextElementToFocusWrapper = () => { findNextElementToFocus(focusedElement, container, direction) }
+    const findNextElementToFocusWrapper = () => {
+      findNextElementToFocus(focusedElement, container, direction)
+    }
 
     expect(findNextElementToFocusWrapper).toThrow()
     expect(pickBestMatch).not.toHaveBeenCalled()

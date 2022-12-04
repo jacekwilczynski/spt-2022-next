@@ -9,7 +9,9 @@ export function handleKeyboardEvent(event: KeyboardEvent) {
 
   const nextElement = findNextElementToFocus(event.target as HTMLElement, event.currentTarget as HTMLElement, direction)
 
-  if (!nextElement) { return }
+  if (!nextElement) {
+    return
+  }
 
   nextElement.focus()
 }
