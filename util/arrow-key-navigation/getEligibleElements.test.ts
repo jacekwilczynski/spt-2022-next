@@ -1,5 +1,5 @@
+import { expect } from '@/lib/typesafe-expect'
 import { describe, it } from '@jest/globals'
-import { expect } from '../../lib/typesafe-expect'
 import { getEligibleElements } from './getEligibleElements'
 
 describe('getEligibleElements', () => {
