@@ -1,4 +1,5 @@
-import { describe, expect, it, jest } from '@jest/globals'
+import { describe, it, jest } from '@jest/globals'
+import { expect } from '../../lib/typesafe-expect'
 import { findNextElementToFocus } from './findNextElementToFocus'
 import { handleKeyboardEvent } from './handleKeyboardEvent'
 
@@ -22,10 +23,13 @@ describe('handleKeyboardEvent', () => {
     ['ArrowRight', 'right'],
     ['ArrowUp', 'up'],
     ['ArrowDown', 'down'],
-  ])('tries to find next element based on pressed arrow key', (key, direction) => {
-    pressKey(key)
-    expect(findNextElementToFocusMocked).toHaveBeenCalledWith(focusedElement, container, direction)
-  })
+  ] as const)(
+    'tries to find next element based on pressed arrow key',
+    (...[key, direction]) => {
+      pressKey(key)
+      expect(findNextElementToFocusMocked).toHaveBeenCalledWith(focusedElement, container, direction)
+    },
+  )
 
   it('focuses element if found', () => {
     const element = document.createElement('span')

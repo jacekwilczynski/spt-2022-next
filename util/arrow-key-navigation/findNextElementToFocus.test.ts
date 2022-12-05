@@ -1,4 +1,5 @@
-import { describe, expect, it, jest } from '@jest/globals'
+import { describe, it, jest } from '@jest/globals'
+import { expect } from '../../lib/typesafe-expect'
 import { findNextElementToFocus } from './findNextElementToFocus'
 import { getEligibleElements } from './getEligibleElements'
 import { pickBestMatch } from './pickBestMatch'

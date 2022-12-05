@@ -1,4 +1,5 @@
-import { describe, expect, it } from '@jest/globals'
+import { describe, it } from '@jest/globals'
+import { expect } from '../lib/typesafe-expect'
 import { asPercentage } from './percent'
 
 describe('the asPercentage function', () => {
