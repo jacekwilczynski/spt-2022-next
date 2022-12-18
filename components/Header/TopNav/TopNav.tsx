@@ -6,7 +6,7 @@ import { MenuToggler } from './MenuToggler'
 import styles from './TopNav.module.scss'
 
 export const TopNav = () => {
-  const [shouldMenuBeVisible, toggleMenuVisibility] = useToggle()
+  const [shouldMenuBeVisibleOnMobile, toggleMenuVisibility] = useToggle(false)
   const menuElementId = useId()
 
   return (
@@ -16,12 +16,14 @@ export const TopNav = () => {
 
       <MenuToggler
         onClick={toggleMenuVisibility}
-        aria-expanded={shouldMenuBeVisible}
+        aria-expanded={shouldMenuBeVisibleOnMobile}
         aria-controls={menuElementId}
       />
 
       <Menu
-        className={classNames({ 'd-none': !shouldMenuBeVisible })}
+        className={classNames({
+          [styles['mobile-hidden']]: !shouldMenuBeVisibleOnMobile,
+        })}
         id={menuElementId}
       />
 
@@ -29,8 +31,8 @@ export const TopNav = () => {
   )
 }
 
-const useToggle = () => {
-  const [value, setValue] = useState(false)
+const useToggle = (initialValue: boolean) => {
+  const [value, setValue] = useState(initialValue)
 
   return [
     value,

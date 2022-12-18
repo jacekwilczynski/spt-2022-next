@@ -22,3 +22,9 @@ $-breakpoint: 768px;
     align-items: center;
   }
 }
+
+.mobile-hidden {
+  @include mobile {
+    display: none;
+  }
+}
